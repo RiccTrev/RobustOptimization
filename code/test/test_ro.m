@@ -6,7 +6,7 @@ form = input('insert case under study: ');
 
 switch form
     case 0
-        % --- Problema deterministico ---
+        % --- Deterministic ---
         ub = Inf(n_variables,1);
         lb = zeros(n_variables,1);
         A = [10 20; 6 8];
@@ -20,15 +20,15 @@ switch form
         A*[x1; x2]
         b
 
-        %Calcoliamo il problema
+        % Calculation of the problem
         options = optimoptions('linprog','Algorithm','dual-simplex');
         [x,fval,exitflag,output] = linprog(f,A,b,Aeq,beq,lb,ub,options);
         x
         abs(fval)
         
     case 1
-        % --- Problema deterministico opposto 
-        % (max con vincoli upper-equal) ---
+        % --- Deterministic inverse 
+        % (max with upper-equal constraints) ---
         ub = Inf(n_variables,1);
         lb = zeros(n_variables,1);
         A = [-10 -20; -6 -8];
@@ -42,14 +42,14 @@ switch form
         A*[x1; x2]
         b
 
-        %Calcoliamo il problema
+        % Calculation
         options = optimoptions('linprog','Algorithm','dual-simplex');
         [x,fval,exitflag,output] = linprog(f,A,b,Aeq,beq,lb,ub,options);
         x
         abs(fval)
         
     case 2
-        % --- Problema deterministico con vincoli di equality---
+        % --- Deterministic with equality constraints---
         ub = Inf(n_variables,1);
         lb = zeros(n_variables,1);
         A = [];
@@ -63,7 +63,7 @@ switch form
         Aeq*[x1; x2]
         beq
 
-        %Calcoliamo il problema
+        % Calculation of the problem
         options = optimoptions('linprog','Algorithm','dual-simplex');
         [x,fval,exitflag,output] = linprog(f,A,b,Aeq,beq,lb,ub,options);
         x
